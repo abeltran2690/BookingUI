@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { createBookingDTO, createClientDTO, identificationType } from 'src/app/interfaces/booking';
-import { ClientService } from 'src/app/services/create-client.service';
+import { createClientService } from 'src/app/services/create-client.service';
 
 @Component({
   selector: 'app-create-booking',
@@ -18,7 +18,7 @@ export class CreateBookingComponent implements OnInit {
   ]
 
   constructor(private router: Router, private formBuilder: FormBuilder, 
-    private clientsService: ClientService) { }
+    private clientsService: createClientService) { }
 
   form!: FormGroup;
 
