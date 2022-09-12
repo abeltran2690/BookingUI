@@ -1,0 +1,89 @@
+<mat-card>
+    <form (submit)="createBooking()" [formGroup]="form">
+        <h3>Crear Reserva</h3>
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="name" type="text" id="name" class="fsorm-control" placeholder="Ingrese su nombre"
+                matInput>
+            <mat-error *ngIf="form.invalid">{{getErrorName()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input formControlName="surname" type="text" id="surname" class="form-control"
+                placeholder="Ingrese su apellido" matInput>
+            <mat-error *ngIf="form.invalid">{{getErrorSurname()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Tipo de Documento</mat-label>
+            <mat-select formControlName="identificationType">
+                <mat-option *ngFor="let identification of identificationTypes" [value]="identification.value">
+                    {{identification.viewValue}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Identificación</mat-label>
+            <input formControlName="identification" type="number" id="surname" class="form-control"
+                placeholder="Ingrese su numero de identificación" matInput>
+            <mat-error *ngIf="form.invalid">{{getErrorIdentification()}}</mat-error>
+        </mat-form-field>
+
+        <section class="example-section">
+            <mat-checkbox class="example-margin">Hombre</mat-checkbox>
+            <mat-checkbox class="example-margin">Mujer</mat-checkbox>
+        </section>
+
+        <mat-form-field class="field" appearance="outline">
+            <mat-label>Identificación</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle marSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- <div class="form-group mb-3">
+            <label for="name">Nombre</label>
+            <input formControlName="name" type="text" id="name" class="form-control" placeholder="Ingrese su nombre">
+        </div> -->
+        <!-- <div class="form-group mb-3">
+            <label for="surname">Apellido</label>
+            <input formControlName="surname" type="text" id="surname" class="form-control" placeholder="Ingrese su apellido">
+        </div>
+        <div class="form-group mb-3">
+            <label for="surname">Tipo de documento</label>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Seleccionar
+                </a>
+
+                <ul class="dropdown-menu" wfd-invisible="true">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+        </div> -->
+        <!-- <div class="form-group mb-3">
+            <label for="identification">Identificación</label>
+            <input type="number" id="identification" class="form-control" placeholder="Ingrese su numero de Identificación">
+        </div>
+        <div class="form-group mb-3">
+            <label for="surname">Género</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">Masculino</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
+                <label class="form-check-label" for="flexRadioDefault2">Femenino</label>
+            </div>
+        </div> -->
+        <!-- <div class="form-group mb-3">
+            <label for="date">Fecha</label>
+            <input type="date" id="date" class="form-control">
+        </div> -->
+        <button mat-raised-button color="primary" [disabled]="form.invalid">Reservar</button>
+    </form>
+</mat-card>
